@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Aloti.Forms.Prims.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <StackLayout
+        BackgroundColor="{StaticResource Primary}"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+        <StackLayout
+            Padding="30,60,30,20"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="StartAndExpand">
+            <ffimageloading:CachedImage
+                Aspect="AspectFit"
+                CacheType="All"
+                ErrorPlaceholder="LogoEnterprise.png"
+                HorizontalOptions="Center"
+                LoadingPlaceholder="LogoEnterprise.png"
+                LoadingPriority="High"
+                RetryCount="3"
+                RetryDelay="600"
+                Source="LogoEnterprise.png"
+                VerticalOptions="Start" />
+            <Entry
+                Margin="0,20,0,20"
+                BackgroundColor="{StaticResource SecondaryColor}"
+                Placeholder="Usuario"
+                WidthRequest="300" />
+            <Entry
+                BackgroundColor="{StaticResource SecondaryColor}"
+                Placeholder="Contraseña"
+                WidthRequest="300" />
+            <Button
+                Style="{StaticResource STBtn_Blues}"
+                Text="Ingresar"
+                WidthRequest="200" />
+
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

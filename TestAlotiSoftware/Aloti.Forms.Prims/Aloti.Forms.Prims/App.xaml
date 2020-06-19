@@ -1,11 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="http://prismlibrary.com"
-             x:Class="Aloti.Forms.Prims.App">
-  <Application.Resources>
+<prism:PrismApplication
+    x:Class="Aloti.Forms.Prims.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com">
+    <Application.Resources>
 
-    <!-- Application resource dictionary -->
+        <ResourceDictionary>
 
-  </Application.Resources>
+            <x:String x:Key="Url">https://www.google.co.ve/</x:String>
+            <x:String x:Key="UrlAPI">https://ac-developers.com/primavera/</x:String>
+
+
+            <Color x:Key="Primary">#023e6f</Color>
+            <Color x:Key="SecondaryColor">#FFFFFF</Color>
+            <Color x:Key="Btn_Blues">#006ab0</Color>
+
+
+            <Style x:Key="STBtn_Blues" TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource SecondaryColor}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Btn_Blues}" />
+                <Setter Property="BorderColor" Value="{StaticResource SecondaryColor}" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="FontAttributes" Value="none" />
+                <Setter Property="Margin" Value="0,20,0,20" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
 </prism:PrismApplication>
