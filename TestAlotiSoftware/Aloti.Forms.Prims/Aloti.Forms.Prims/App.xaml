@@ -3,6 +3,7 @@
     x:Class="Aloti.Forms.Prims.App"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:LocalCustom="clr-namespace:Aloti.Forms.Prims.CustomRender"
     xmlns:prism="http://prismlibrary.com">
     <Application.Resources>
 
@@ -13,12 +14,15 @@
 
 
             <Color x:Key="Primary">#023e6f</Color>
-            <Color x:Key="SecondaryColor">#FFFFFF</Color>
+            <Color x:Key="Accent">#02325b</Color>
+            <Color x:Key="SecondaryColor">#7794ab</Color>
+            <Color x:Key="TextColorWhite">#F5f5f5</Color>
             <Color x:Key="Btn_Blues">#006ab0</Color>
+            <Color x:Key="WhiteColor">#ffffff</Color>
 
 
-            <Style x:Key="STBtn_Blues" TargetType="Button">
-                <Setter Property="TextColor" Value="{StaticResource SecondaryColor}" />
+            <Style x:Key="STBtnPrimary" TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource TextColorWhite}" />
                 <Setter Property="BackgroundColor" Value="{StaticResource Btn_Blues}" />
                 <Setter Property="BorderColor" Value="{StaticResource SecondaryColor}" />
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
@@ -26,7 +30,20 @@
                 <Setter Property="BorderWidth" Value="1" />
                 <Setter Property="FontAttributes" Value="none" />
                 <Setter Property="Margin" Value="0,20,0,20" />
-                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontSize" Value="17" />
+            </Style>
+
+            <Style x:Key="STEntryCustomPrimary" TargetType="LocalCustom:CustomEntry">
+                <Setter Property="Margin" Value="0,0,0,20" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="{StaticResource TextColorWhite}" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource SecondaryColor}" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Padding" Value="13" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
+                <Setter Property="BorderColor" Value="{StaticResource SecondaryColor}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="8" />
             </Style>
 
         </ResourceDictionary>

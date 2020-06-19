@@ -2,6 +2,7 @@ using Aloti.Forms.Prims.ViewModels;
 using Aloti.Forms.Prims.Views;
 using Prism;
 using Prism.Ioc;
+using Prism.Plugin.Popups;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Forms;
@@ -30,6 +31,9 @@ namespace Aloti.Forms.Prims
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+
+            containerRegistry.RegisterPopupNavigationService();
+            containerRegistry.RegisterPopupDialogService();
         }
     }
 }

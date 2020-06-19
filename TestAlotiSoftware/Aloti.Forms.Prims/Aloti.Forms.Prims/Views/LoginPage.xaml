@@ -3,17 +3,23 @@
     x:Class="Aloti.Forms.Prims.Views.LoginPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:LocalCustom="clr-namespace:Aloti.Forms.Prims.CustomRender"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:prism="http://prismlibrary.com"
-    prism:ViewModelLocator.AutowireViewModel="True">
+    xmlns:yummi="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    IsEnabled="{Binding IsEnable}">
+
     <StackLayout
         BackgroundColor="{StaticResource Primary}"
         HorizontalOptions="FillAndExpand"
         VerticalOptions="FillAndExpand">
+
         <StackLayout
             Padding="30,60,30,20"
             HorizontalOptions="CenterAndExpand"
             VerticalOptions="StartAndExpand">
+
             <ffimageloading:CachedImage
                 Aspect="AspectFit"
                 CacheType="All"
@@ -24,21 +30,73 @@
                 RetryCount="3"
                 RetryDelay="600"
                 Source="LogoEnterprise.png"
-                VerticalOptions="Start" />
-            <Entry
+                VerticalOptions="Start"
+                WidthRequest="250" />
+
+            <LocalCustom:CustomEntry
                 Margin="0,20,0,20"
-                BackgroundColor="{StaticResource SecondaryColor}"
                 Placeholder="Usuario"
+                Style="{StaticResource STEntryCustomPrimary}"
+                Text="{Binding Username}"
                 WidthRequest="300" />
-            <Entry
-                BackgroundColor="{StaticResource SecondaryColor}"
+
+            <LocalCustom:CustomEntry
+                Margin="0,0,0,20"
+                IsPassword="True"
                 Placeholder="Contraseña"
+                Style="{StaticResource STEntryCustomPrimary}"
+                Text="{Binding Password}"
                 WidthRequest="300" />
+
+            <ActivityIndicator
+                HeightRequest="35"
+                HorizontalOptions="CenterAndExpand"
+                IsRunning="{Binding IsRunning}"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="35"
+                Color="{StaticResource WhiteColor}" />
+
             <Button
-                Style="{StaticResource STBtn_Blues}"
+                Command="{Binding LoginCommand}"
+                Style="{StaticResource STBtnPrimary}"
                 Text="Ingresar"
                 WidthRequest="200" />
 
         </StackLayout>
+
+        <yummi:PancakeView
+            Padding="0"
+            BackgroundColor="{StaticResource WhiteColor}"
+            CornerRadius="7,7,0,0"
+            HasShadow="True"
+            HeightRequest="80"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="EndAndExpand"
+            WidthRequest="300">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <ffimageloading:CachedImage
+                    Aspect="AspectFit"
+                    CacheType="All"
+                    ErrorPlaceholder="BCBanner.png"
+                    HeightRequest="60"
+                    HorizontalOptions="Center"
+                    LoadingPlaceholder="BCBanner.png"
+                    LoadingPriority="High"
+                    RetryCount="3"
+                    RetryDelay="600"
+                    Source="BCBanner.png"
+                    VerticalOptions="Start"
+                    WidthRequest="200" />
+
+                <Label
+                    FontSize="10"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="V 1.00"
+                    VerticalOptions="End"
+                    VerticalTextAlignment="End" />
+
+            </StackLayout>
+        </yummi:PancakeView>
     </StackLayout>
 </ContentPage>
