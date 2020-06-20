@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Aloti.Forms.Prims.Views.RequestPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource WhiteColor}">
+
+    <NavigationPage.TitleView>
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal"
+            VerticalOptions="FillAndExpand">
+            <Label
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Text="Solicitudes de analisis"
+                TextColor="{StaticResource TextColorWhite}"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+
+            <ffimageloading:CachedImage
+                Margin="10,10,20,10"
+                Aspect="AspectFill"
+                ErrorPlaceholder="BCS.png"
+                HeightRequest="35"
+                HorizontalOptions="End"
+                LoadingPlaceholder="BCS.png"
+                LoadingPriority="High"
+                Source="BCS.png"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="35" />
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+
+</ContentPage>

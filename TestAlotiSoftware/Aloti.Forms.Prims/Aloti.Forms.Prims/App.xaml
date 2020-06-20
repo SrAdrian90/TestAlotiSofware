@@ -17,6 +17,7 @@
             <Color x:Key="Accent">#02325b</Color>
             <Color x:Key="SecondaryColor">#7794ab</Color>
             <Color x:Key="TextColorWhite">#F5f5f5</Color>
+            <Color x:Key="TertiaryColor">#f90444</Color>
             <Color x:Key="Btn_Blues">#006ab0</Color>
             <Color x:Key="WhiteColor">#ffffff</Color>
 

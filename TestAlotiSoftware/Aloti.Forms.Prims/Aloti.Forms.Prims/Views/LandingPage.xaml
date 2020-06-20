@@ -9,7 +9,6 @@
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource Primary}">
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
         <StackLayout
             Padding="30,60,30,20"
             HorizontalOptions="CenterAndExpand"
@@ -36,6 +35,7 @@
                 CornerRadius="8"
                 HasShadow="True"
                 HeightRequest="100"
+                IsVisible="{Binding IsVisibleSimulator}"
                 VerticalOptions="CenterAndExpand"
                 WidthRequest="300">
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -47,15 +47,16 @@
                         Orientation="Horizontal"
                         VerticalOptions="StartAndExpand">
                         <ffimageloading:CachedImage
+                            Margin="10"
                             Aspect="AspectFill"
                             ErrorPlaceholder="ic_simulator"
-                            HeightRequest="50"
+                            HeightRequest="30"
                             HorizontalOptions="Start"
                             LoadingPlaceholder="ic_requests"
                             LoadingPriority="High"
-                            Source="ic_requests"
+                            Source="baseline.png"
                             VerticalOptions="CenterAndExpand"
-                            WidthRequest="50" />
+                            WidthRequest="30" />
                         <Label
                             FontAttributes="Bold"
                             FontSize="18"
@@ -65,12 +66,14 @@
                             VerticalTextAlignment="Center" />
 
                     </StackLayout>
+
                     <StackLayout
                         Margin="0,-6,0,0"
                         Padding="0"
                         BackgroundColor="{StaticResource SecondaryColor}"
                         HeightRequest="1"
                         HorizontalOptions="FillAndExpand" />
+
                     <StackLayout
                         Margin="0,-6,0,0"
                         Padding="0"
@@ -90,6 +93,9 @@
                                 TextColor="{StaticResource SecondaryColor}"
                                 VerticalOptions="CenterAndExpand"
                                 VerticalTextAlignment="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FixedRateCommand}" />
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
                         <StackLayout
                             BackgroundColor="{StaticResource SecondaryColor}"
@@ -107,16 +113,107 @@
                                 TextColor="{StaticResource SecondaryColor}"
                                 VerticalOptions="CenterAndExpand"
                                 VerticalTextAlignment="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding VariableRateCommand}" />
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </StackLayout>
-
                 </StackLayout>
 
             </yummi:PancakeView>
 
 
+            <yummi:PancakeView
+                Margin="0,10,0,0"
+                BackgroundColor="{StaticResource TertiaryColor}"
+                CornerRadius="8"
+                HasShadow="True"
+                HeightRequest="50"
+                HorizontalOptions="CenterAndExpand"
+                IsVisible="{Binding IsVisibleVisits}"
+                VerticalOptions="Center"
+                WidthRequest="300">
 
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="FillAndExpand">
+
+                    <ffimageloading:CachedImage
+                        Margin="10"
+                        Aspect="AspectFill"
+                        ErrorPlaceholder="users.png"
+                        HeightRequest="30"
+                        HorizontalOptions="Start"
+                        LoadingPlaceholder="ic_users.png"
+                        LoadingPriority="High"
+                        Source="users.png"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="30" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        Text="Visitas asignadas de verificación"
+                        TextColor="{StaticResource TextColorWhite}"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+
+                </StackLayout>
+
+                <yummi:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding VisitCommand}" />
+                </yummi:PancakeView.GestureRecognizers>
+
+            </yummi:PancakeView>
+
+            <yummi:PancakeView
+                Margin="0,10,0,0"
+                BackgroundColor="{StaticResource Btn_Blues}"
+                BorderColor="{StaticResource SecondaryColor}"
+                BorderThickness="1"
+                CornerRadius="8"
+                HasShadow="True"
+                HeightRequest="50"
+                HorizontalOptions="CenterAndExpand"
+                IsVisible="{Binding IsVisibleRequests}"
+                VerticalOptions="Center"
+                WidthRequest="300">
+
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="FillAndExpand">
+
+                    <ffimageloading:CachedImage
+                        Margin="10"
+                        Aspect="AspectFill"
+                        ErrorPlaceholder="users.png"
+                        HeightRequest="30"
+                        HorizontalOptions="Start"
+                        LoadingPlaceholder="ic_users.png"
+                        LoadingPriority="High"
+                        Source="note.png"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="30" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="16"
+                        Text="Solicitudes asignadas de análisis"
+                        TextColor="{StaticResource TextColorWhite}"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+
+                </StackLayout>
+
+                <yummi:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RequestCommand}" />
+                </yummi:PancakeView.GestureRecognizers>
+
+
+            </yummi:PancakeView>
         </StackLayout>
+
+
 
         <yummi:PancakeView
             Padding="0"

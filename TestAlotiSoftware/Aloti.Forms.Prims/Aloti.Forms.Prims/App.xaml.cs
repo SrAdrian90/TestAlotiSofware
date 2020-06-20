@@ -47,11 +47,15 @@ namespace Aloti.Forms.Prims
             containerRegistry.RegisterPopupDialogService();
             containerRegistry.RegisterForNavigation<PopupDialogue, PopupDialogueViewModel>();
             containerRegistry.RegisterForNavigation<LandingPage, LandingPageViewModel>();
+            containerRegistry.RegisterForNavigation<FixedRatePage, FixedRatePageViewModel>();
+            containerRegistry.RegisterForNavigation<VariableRatePage, VariableRatePageViewModel>();
+            containerRegistry.RegisterForNavigation<VisitPage, VisitPageViewModel>();
+            containerRegistry.RegisterForNavigation<RequestPage, RequestPageViewModel>();
         }
 
         private void LoadDataBase()
         {
-            DBContext.Add("Database.db3", new List<Type>()
+            DBContext.Add("DatabasePrueba.db3", new List<Type>()
             {
                 typeof(User),
 
@@ -110,7 +114,12 @@ namespace Aloti.Forms.Prims
             Users.Add(User3);
 
             UserRepository userRepo = new UserRepository();
-                      
+
+            foreach (var item in userRepo.ListUser())
+            {
+                userRepo.Delete(item);
+            }
+
 
             foreach (User user in Users)
             {
