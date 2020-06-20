@@ -34,6 +34,7 @@ namespace Aloti.Forms.Prims
 
             containerRegistry.RegisterPopupNavigationService();
             containerRegistry.RegisterPopupDialogService();
+            containerRegistry.RegisterForNavigation<PopupDialogue, PopupDialogueViewModel>();
         }
     }
 }
