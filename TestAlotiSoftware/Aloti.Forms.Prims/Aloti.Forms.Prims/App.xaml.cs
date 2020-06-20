@@ -1,3 +1,4 @@
+using Aloti.Forms.Prims.Helpers;
 using Aloti.Forms.Prims.Models;
 using Aloti.Forms.Prims.Repositories;
 using Aloti.Forms.Prims.Storage;
@@ -45,62 +46,84 @@ namespace Aloti.Forms.Prims
             containerRegistry.RegisterPopupNavigationService();
             containerRegistry.RegisterPopupDialogService();
             containerRegistry.RegisterForNavigation<PopupDialogue, PopupDialogueViewModel>();
+            containerRegistry.RegisterForNavigation<LandingPage, LandingPageViewModel>();
         }
 
-        void LoadDataBase()
+        private void LoadDataBase()
         {
             DBContext.Add("Database.db3", new List<Type>()
             {
                 typeof(User),
+
             });
         }
 
-        void LoadUser()
+        private void LoadUser()
         {
-            var User1 = new User
+            List<User> Users = new List<User>();
+
+            User User1 = new User
             {
                 FirstName = "Juan Alberto",
                 LastName = "Cárdenas Trellez",
+                Username = "Juan01",
                 Address = "Calle 65 # 1-45 Urbanización el Nogal",
                 Document = "105245788",
                 Gender = Shared.Common.Enums.Gender.Men,
+                Password = Encrypt.GetSHA256("123456"),
                 Id = new Guid(),
                 Rule = Shared.Common.Enums.Rules.Client
 
             };
 
-            var User2 = new User
+            Users.Add(User1);
+
+            User User2 = new User
             {
                 FirstName = "Maria Clara",
                 LastName = "Tina Meliz",
+                Username = "Maria02",
                 Address = "Av 5 # 85-78 Barrio Americas",
                 Document = "78965412",
                 Gender = Shared.Common.Enums.Gender.Female,
+                Password = Encrypt.GetSHA256("Maria25"),
                 Id = new Guid(),
                 Rule = Shared.Common.Enums.Rules.Admin
 
             };
 
-            var User3 = new User
+            Users.Add(User2);
+
+            User User3 = new User
             {
                 FirstName = "Miguel Angel",
                 LastName = "Florez Ortiz",
+                Username = "Miguel03",
                 Address = "Ciuda de Dios # 1-54 Colpatria",
                 Document = "58254252",
                 Gender = Shared.Common.Enums.Gender.Men,
+                Password = Encrypt.GetSHA256("Miguel2020"),
                 Id = new Guid(),
                 Rule = Shared.Common.Enums.Rules.Anonymous
-
             };
 
-            var x = new UserRepository();
-            x.Save(User2);
+            Users.Add(User3);
 
-           
+            UserRepository userRepo = new UserRepository();
+                      
 
+            foreach (User user in Users)
+            {
+                bool ExistUser = userRepo.ExisteDocument(user);
+
+                if (!ExistUser)
+                {
+                    userRepo.Save(user);
+                }
+
+            }
 
         }
-
 
     }
 }

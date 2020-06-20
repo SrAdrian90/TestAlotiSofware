@@ -1,5 +1,7 @@
-﻿using Aloti.Forms.Prims.Models;
+﻿using Aloti.Forms.Prims.Helpers;
+using Aloti.Forms.Prims.Models;
 using Aloti.Forms.Prims.Storage;
+using FFImageLoading;
 using ImTools;
 using System;
 using System.Collections.Generic;
@@ -20,10 +22,60 @@ namespace Aloti.Forms.Prims.Repositories
             Save(user);
         }
 
+        public bool DeleteUser(User user)
+        {
+            try
+            {
+                Delete(user);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+
+            }
+
+        }
+
         public bool ExisteDocument(User user)
         {
-            var x = FindAllWhere(d => d.Document == user.Document).FirstOrDefault();
-            return true;
+            var userResponse = FindAllWhere(d => d.Document == user.Document).FirstOrDefault();
+
+            if (userResponse != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public User LoginUser(string username, string password)
+        {
+            password = Encrypt.GetSHA256(password);
+
+            try
+            {
+                User user = FindAllWhere(d => d.Username.ToLower() == username.ToLower()).FirstOrDefault();
+
+                if (user != null)
+                {
+                    if (user.Password == password)
+                    {
+                        return user;
+                    }
+
+                    return null;
+                }
+
+                return null;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
 

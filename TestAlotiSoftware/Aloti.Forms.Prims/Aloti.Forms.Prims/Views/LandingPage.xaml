@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Aloti.Forms.Prims.Views.LandingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:yummi="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource Primary}">
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <StackLayout
+            Padding="30,60,30,20"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="StartAndExpand">
+
+            <ffimageloading:CachedImage
+                Aspect="AspectFit"
+                CacheType="All"
+                ErrorPlaceholder="LogoEnterprise.png"
+                HorizontalOptions="Center"
+                LoadingPlaceholder="LogoEnterprise.png"
+                LoadingPriority="High"
+                RetryCount="3"
+                RetryDelay="600"
+                Source="LogoEnterprise.png"
+                VerticalOptions="Start"
+                WidthRequest="160" />
+
+            <yummi:PancakeView
+                Margin="0,30,0,0"
+                Padding="0"
+                BorderColor="{StaticResource SecondaryColor}"
+                BorderThickness="1"
+                CornerRadius="8"
+                HasShadow="True"
+                HeightRequest="100"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="300">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="{StaticResource Btn_Blues}"
+                        HeightRequest="50"
+                        Orientation="Horizontal"
+                        VerticalOptions="StartAndExpand">
+                        <ffimageloading:CachedImage
+                            Aspect="AspectFill"
+                            ErrorPlaceholder="ic_simulator"
+                            HeightRequest="50"
+                            HorizontalOptions="Start"
+                            LoadingPlaceholder="ic_requests"
+                            LoadingPriority="High"
+                            Source="ic_requests"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="50" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            Text="Simulador"
+                            TextColor="{StaticResource TextColorWhite}"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+
+                    </StackLayout>
+                    <StackLayout
+                        Margin="0,-6,0,0"
+                        Padding="0"
+                        BackgroundColor="{StaticResource SecondaryColor}"
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand" />
+                    <StackLayout
+                        Margin="0,-6,0,0"
+                        Padding="0"
+                        BackgroundColor="{StaticResource Primary}"
+                        HeightRequest="60"
+                        Orientation="Horizontal"
+                        VerticalOptions="FillAndExpand">
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            WidthRequest="150">
+                            <Label
+                                FontSize="15"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Text="Tasa Fija"
+                                TextColor="{StaticResource SecondaryColor}"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout
+                            BackgroundColor="{StaticResource SecondaryColor}"
+                            VerticalOptions="FillAndExpand"
+                            WidthRequest="1" />
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            WidthRequest="150">
+                            <Label
+                                FontSize="15"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Text="Tasa Variable"
+                                TextColor="{StaticResource SecondaryColor}"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                    </StackLayout>
+
+                </StackLayout>
+
+            </yummi:PancakeView>
+
+
+
+        </StackLayout>
+
+        <yummi:PancakeView
+            Padding="0"
+            BackgroundColor="{StaticResource WhiteColor}"
+            CornerRadius="7,7,0,0"
+            HasShadow="True"
+            HeightRequest="80"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="EndAndExpand"
+            WidthRequest="300">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <ffimageloading:CachedImage
+                    Aspect="AspectFit"
+                    CacheType="All"
+                    ErrorPlaceholder="BCBanner.png"
+                    HeightRequest="60"
+                    HorizontalOptions="Center"
+                    LoadingPlaceholder="BCBanner.png"
+                    LoadingPriority="High"
+                    RetryCount="3"
+                    RetryDelay="600"
+                    Source="BCBanner.png"
+                    VerticalOptions="Start"
+                    WidthRequest="200" />
+
+                <Label
+                    FontSize="10"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="V 1.00"
+                    VerticalOptions="End"
+                    VerticalTextAlignment="End" />
+
+            </StackLayout>
+        </yummi:PancakeView>
+    </StackLayout>
+</ContentPage>

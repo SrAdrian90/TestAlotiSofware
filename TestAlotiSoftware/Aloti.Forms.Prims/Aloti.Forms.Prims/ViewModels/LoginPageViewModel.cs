@@ -1,6 +1,8 @@
 ﻿using Aloti.Forms.Prims.Helpers;
 using Aloti.Forms.Prims.Repositories;
+using Aloti.Forms.Prims.Storage;
 using DryIoc;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Navigation;
 using Rg.Plugins.Popup.Contracts;
@@ -60,20 +62,43 @@ namespace Aloti.Forms.Prims.ViewModels
             IsEnabled = true;
             IsRunning = false;
 
-            var y = new UserRepository().FindAll();
-            Username = y[0].FirstName;
-
         }
 
         private async void LoginAsync()
         {
+            IsEnabled = false;
 
             bool Validate = await ValidationAsync();
 
             if (!Validate)
             {
+                IsEnabled = true;
                 return;
             }
+
+            IsRunning = true;
+
+
+            await Task.Delay(1500);
+
+            var userResponse = new UserRepository().LoginUser(Username, Password);
+
+            if (userResponse == null)
+            {
+                await _modalDialogue.SendDisplay("Atención", "Hubo un problema con la información del usuario.");
+                Username = string.Empty;
+                Password = string.Empty;
+
+                IsRunning = false;
+                IsEnabled = true;
+                return;
+            }
+
+            Settings.User = JsonConvert.SerializeObject(userResponse);
+            Username = string.Empty;
+            Password = string.Empty;
+
+            await _navigationService.NavigateAsync("/NavigationPage/LandingPage");
 
 
         }
