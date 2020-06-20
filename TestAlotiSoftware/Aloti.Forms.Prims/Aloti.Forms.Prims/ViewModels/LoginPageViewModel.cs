@@ -1,4 +1,5 @@
 ﻿using Aloti.Forms.Prims.Helpers;
+using Aloti.Forms.Prims.Repositories;
 using DryIoc;
 using Prism.Commands;
 using Prism.Navigation;
@@ -58,6 +59,9 @@ namespace Aloti.Forms.Prims.ViewModels
 
             IsEnabled = true;
             IsRunning = false;
+
+            var y = new UserRepository().FindAll();
+            Username = y[0].FirstName;
 
         }
 
