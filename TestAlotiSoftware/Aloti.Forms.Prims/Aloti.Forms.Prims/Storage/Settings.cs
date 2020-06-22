@@ -7,6 +7,8 @@ namespace Aloti.Forms.Prims.Storage
     {
 
         private const string _user = "user";
+        private const string _request = "request";
+
 
         private static readonly string _stringDefault = string.Empty;
         private static readonly bool _boolDefault = false;
@@ -19,6 +21,11 @@ namespace Aloti.Forms.Prims.Storage
         {
             get => AppSettings.GetValueOrDefault(_user, _stringDefault);
             set => AppSettings.AddOrUpdateValue(_user, value);
+        }
+        public static string Request
+        {
+            get => AppSettings.GetValueOrDefault(_request, _stringDefault);
+            set => AppSettings.AddOrUpdateValue(_request, value);
         }
     }
 }

@@ -5,9 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:prism="http://prismlibrary.com"
+    xmlns:yummi="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="{StaticResource WhiteColor}">
-
 
     <NavigationPage.TitleView>
         <StackLayout
@@ -33,8 +33,275 @@
                 Source="BCS.png"
                 VerticalOptions="CenterAndExpand"
                 WidthRequest="35" />
-
         </StackLayout>
+
     </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout
+                Margin="10"
+                AbsoluteLayout.LayoutBounds="1,1,1,1"
+                AbsoluteLayout.LayoutFlags="All">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    HorizontalOptions="Start"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding AS, StringFormat='{0: solicitudes asignadas}'}"
+                    TextColor="Gray"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Center" />
+
+                <yummi:PancakeView
+                    Padding="0"
+                    BorderColor="#C7C8CA"
+                    BorderThickness="1"
+                    CornerRadius="7,7,0,0"
+                    HeightRequest="50"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Start">
+
+                    <Grid
+                        Margin="0"
+                        Padding="0"
+                        BackgroundColor="#E6E7E9"
+                        HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="0.25*" />
+                            <ColumnDefinition Width="0.3*" />
+                            <ColumnDefinition Width="0.2*" />
+                            <ColumnDefinition Width="0.2*" />
+                            <ColumnDefinition Width="40" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="0"
+                            Padding="0"
+                            FontAttributes="Bold"
+                            FontSize="10"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text="Tipo ID"
+                            TextColor="Gray"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0"
+                            Padding="0"
+                            FontAttributes="Bold"
+                            FontSize="10"
+                            HorizontalTextAlignment="Center"
+                            Text="No.ID"
+                            TextColor="#A9AAAB"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Margin="0"
+                            Padding="0"
+                            FontAttributes="Bold"
+                            FontSize="10"
+                            HorizontalTextAlignment="Start"
+                            Text="Solicitante"
+                            TextColor="Gray"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            Margin="0"
+                            Padding="0"
+                            FontAttributes="Bold"
+                            FontSize="10"
+                            HorizontalTextAlignment="Center"
+                            Text="No. de solicitud"
+                            TextColor="Gray"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="4"
+                            Margin="0"
+                            Padding="0"
+                            FontAttributes="Bold"
+                            FontSize="10"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text="Estado"
+                            TextColor="Gray"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center" />
+                    </Grid>
+                </yummi:PancakeView>
+                <CollectionView
+                    x:Name="collectionView"
+                    Margin="0,-6,0,0"
+                    EmptyView="No ahí asignados."
+                    ItemsSource="{Binding RequestList}"
+                    SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <yummi:PancakeView
+                                Padding="0"
+                                BorderColor="#C7C8CA"
+                                BorderThickness="1"
+                                HeightRequest="50"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="Start">
+                                <Grid
+                                    Margin="0"
+                                    Padding="0"
+                                    BackgroundColor="#E6E7E9"
+                                    HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="0.25*" />
+                                        <ColumnDefinition Width="0.3*" />
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="0.2*" />
+                                        <ColumnDefinition Width="40" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50" />
+                                    </Grid.RowDefinitions>
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Margin="5"
+                                        Padding="0"
+                                        FontAttributes="Bold"
+                                        FontSize="10"
+                                        HorizontalOptions="CenterAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding Client.IDType}"
+                                        TextColor="#000000"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="0"
+                                        Padding="0"
+                                        FontAttributes="Bold"
+                                        FontSize="10"
+                                        HorizontalOptions="StartAndExpand"
+                                        HorizontalTextAlignment="Start"
+                                        Text="{Binding Client.Document}"
+                                        TextColor="#000000"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        Margin="0"
+                                        Padding="0"
+                                        FontAttributes="Bold"
+                                        FontSize="10"
+                                        HorizontalTextAlignment="Start"
+                                        MaxLines="1"
+                                        Text="{Binding Client.FullName}"
+                                        TextColor="#000000"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="3"
+                                        Margin="0"
+                                        Padding="0"
+                                        FontAttributes="Bold"
+                                        FontSize="10"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding Id}"
+                                        TextColor="#000000"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="4"
+                                        Margin="0"
+                                        Padding="0"
+                                        FontAttributes="Bold"
+                                        FontSize="10"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        MaxLines="1"
+                                        Text="{Binding StateRequest}"
+                                        TextColor="#000000"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+
+                                    <ffimageloading:CachedImage
+                                        Grid.Row="0"
+                                        Grid.Column="5"
+                                        Aspect="AspectFit"
+                                        CacheType="All"
+                                        ErrorPlaceholder="Eye.png"
+                                        HorizontalOptions="Center"
+                                        LoadingPlaceholder="Eye.png"
+                                        LoadingPriority="High"
+                                        RetryCount="3"
+                                        RetryDelay="600"
+                                        Source="EyeGray.png"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="30">
+                                        <ffimageloading:CachedImage.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding RequestSelectCommand}" />
+                                        </ffimageloading:CachedImage.GestureRecognizers>
+                                    </ffimageloading:CachedImage>
+
+
+                                </Grid>
+
+
+                            </yummi:PancakeView>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+
+            </StackLayout>
+            <StackLayout
+                AbsoluteLayout.LayoutBounds="0.5,0.5,0.5,0.5"
+                AbsoluteLayout.LayoutFlags="All"
+                IsVisible="{Binding IsRunning}">
+                <Frame
+                    BackgroundColor="{StaticResource Primary}"
+                    CornerRadius="8"
+                    HasShadow="False"
+                    HeightRequest="80"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="80">
+                    <StackLayout>
+                        <ActivityIndicator
+                            HorizontalOptions="CenterAndExpand"
+                            IsRunning="{Binding IsRunning}"
+                            IsVisible="{Binding IsRunning}"
+                            VerticalOptions="CenterAndExpand"
+                            Color="#f5f5f5" />
+                        <Label
+                            FontSize="Small"
+                            Text="Cargando..."
+                            TextColor="#f5f5f5" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
 
 </ContentPage>

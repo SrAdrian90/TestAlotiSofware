@@ -130,7 +130,7 @@
                 HasShadow="True"
                 HeightRequest="50"
                 HorizontalOptions="CenterAndExpand"
-                IsVisible="{Binding IsVisibleVisits}"
+                IsVisible="{Binding IsVisibleVisit}"
                 VerticalOptions="Center"
                 WidthRequest="300">
 
@@ -175,7 +175,7 @@
                 HasShadow="True"
                 HeightRequest="50"
                 HorizontalOptions="CenterAndExpand"
-                IsVisible="{Binding IsVisibleRequests}"
+                IsVisible="{Binding IsVisibleRequest}"
                 VerticalOptions="Center"
                 WidthRequest="300">
 
@@ -211,7 +211,16 @@
 
 
             </yummi:PancakeView>
+
+            <ActivityIndicator
+                HeightRequest="35"
+                HorizontalOptions="CenterAndExpand"
+                IsRunning="{Binding IsRunning}"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="35"
+                Color="{StaticResource WhiteColor}" />
         </StackLayout>
+
 
 
 

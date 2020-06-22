@@ -10,7 +10,7 @@
         <ResourceDictionary>
 
             <x:String x:Key="Url">https://www.google.co.ve/</x:String>
-            <x:String x:Key="UrlAPI">https://ac-developers.com/primavera/</x:String>
+            <x:String x:Key="UrlAPI">https://ac-developers.com/Aloti/</x:String>
 
 
             <Color x:Key="Primary">#023e6f</Color>

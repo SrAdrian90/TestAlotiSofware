@@ -1,6 +1,7 @@
 using Aloti.Forms.Prims.Helpers;
 using Aloti.Forms.Prims.Models;
 using Aloti.Forms.Prims.Repositories;
+using Aloti.Forms.Prims.Services;
 using Aloti.Forms.Prims.Storage;
 using Aloti.Forms.Prims.ViewModels;
 using Aloti.Forms.Prims.Views;
@@ -38,6 +39,8 @@ namespace Aloti.Forms.Prims
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+
+            containerRegistry.Register<IApiServices, ApiServices>();
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
@@ -51,13 +54,17 @@ namespace Aloti.Forms.Prims
             containerRegistry.RegisterForNavigation<VariableRatePage, VariableRatePageViewModel>();
             containerRegistry.RegisterForNavigation<VisitPage, VisitPageViewModel>();
             containerRegistry.RegisterForNavigation<RequestPage, RequestPageViewModel>();
+            containerRegistry.RegisterForNavigation<AssignedVisitsPage, AssignedVisitsPageViewModel>();
         }
 
         private void LoadDataBase()
         {
-            DBContext.Add("DatabasePrueba.db3", new List<Type>()
+            DBContext.Add("DatabaseTest.db3", new List<Type>()
             {
                 typeof(User),
+                typeof(Client),
+                typeof(BussinesUnit),
+                typeof(Request)
 
             });
         }

@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Aloti.Forms.Prims.Views.AssignedVisitsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:yummi="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+    <NavigationPage.TitleView>
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal"
+            VerticalOptions="FillAndExpand">
+            <Label
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Text="Visitas asignadas"
+                TextColor="{StaticResource TextColorWhite}"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+
+            <ffimageloading:CachedImage
+                Margin="10,10,20,10"
+                Aspect="AspectFill"
+                ErrorPlaceholder="BCS.png"
+                HeightRequest="35"
+                HorizontalOptions="End"
+                LoadingPlaceholder="BCS.png"
+                LoadingPriority="High"
+                Source="BCS.png"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="35" />
+        </StackLayout>
+
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <ScrollView Margin="0,-10,0,0" Padding="20,10,20,20">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <StackLayout Orientation="Horizontal">
+                    <Label
+                        Margin="0"
+                        Padding="0"
+                        FontSize="18"
+                        HeightRequest="50"
+                        HorizontalTextAlignment="Start"
+                        Text="Cliente:"
+                        TextColor="Gray"
+                        VerticalTextAlignment="Center" />
+                    <Label
+                        Margin="0"
+                        Padding="0"
+                        FontSize="18"
+                        HeightRequest="50"
+                        HorizontalTextAlignment="Start"
+                        Text="{Binding FullName}"
+                        TextColor="{StaticResource TertiaryColor}"
+                        VerticalTextAlignment="Center" />
+
+                </StackLayout>
+                <yummi:PancakeView
+                    Padding="5"
+                    BackgroundColor="#E6E7E9"
+                    BorderColor="#C7C8CA"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="StartAndExpand">
+                    <Grid
+                        Margin="0"
+                        Padding="0"
+                        HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="50" />
+                        </Grid.RowDefinitions>
+
+                        <StackLayout
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="15,15,0,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="11"
+                                Text="Tipo de Identificación"
+                                TextColor="Gray" />
+                            <Label
+                                FontSize="14"
+                                Text="{Binding IdType}"
+                                TextColor="#000000" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="15,0,0,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="11"
+                                Text="Número de Solicitud"
+                                TextColor="Gray"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                FontSize="14"
+                                Text="{Binding IdRequest}"
+                                TextColor="#000000"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Margin="15,0,0,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="11"
+                                Text="Estado"
+                                TextColor="Gray"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                FontSize="14"
+                                Text="{Binding State}"
+                                TextColor="#000000"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Margin="15,0,0,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="11"
+                                Text="Dirección U.Negocio"
+                                TextColor="Gray"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                FontSize="14"
+                                Text="{Binding Address}"
+                                TextColor="#000000"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Margin="15,0,0,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="11"
+                                Text="Teléfono Fijo"
+                                TextColor="Gray"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                FontSize="14"
+                                Text="{Binding Phone}"
+                                TextColor="#000000"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            Margin="15,0,0,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="11"
+                                Text="Oficina de Radicación"
+                                TextColor="Gray"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                FontSize="14"
+                                Text="{Binding Office}"
+                                TextColor="#000000"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+
+
+                        <StackLayout
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="10,15,15,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="11"
+                                Text="Número de Identificación"
+                                TextColor="Gray"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Text="{Binding CC}"
+                                TextColor="#000000"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10,0,15,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="11"
+                                Text="Rol"
+                                TextColor="Gray"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Text="{Binding Rol}"
+                                TextColor="#000000"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="10,0,15,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="11"
+                                Text="Nombre U.Negocio"
+                                TextColor="Gray"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                MaxLines="1"
+                                Text="{Binding Namebussines}"
+                                TextColor="#000000"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Margin="10,0,15,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="11"
+                                Text="Barrio"
+                                TextColor="Gray"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                MaxLines="1"
+                                Text="{Binding Barrio}"
+                                TextColor="#000000"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Margin="10,0,15,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="11"
+                                Text="Ciudad"
+                                TextColor="Gray"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                MaxLines="1"
+                                Text="{Binding Ciudad}"
+                                TextColor="#000000"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Margin="10,0,15,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="11"
+                                Text="Fecha de Inicio"
+                                TextColor="Gray"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                MaxLines="1"
+                                Text="{Binding Dateinitial}"
+                                TextColor="#000000"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            Margin="10,0,15,0">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="11"
+                                Text="Fecha de Fin"
+                                TextColor="Gray"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                MaxLines="1"
+                                Text="{Binding Dateend}"
+                                TextColor="#000000"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                    </Grid>
+                </yummi:PancakeView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

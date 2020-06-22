@@ -21,6 +21,20 @@ namespace AlotiSoftware.Server.Data
         {
             await _context.Database.EnsureCreatedAsync();
 
+            await SeedClient("Jeysson",
+                        "Cárdenas",
+                        "1090419378",
+                        0,
+                        "Unidos",
+                        "Calle falsa #1-23",
+                        "Juan de Dios",
+                        "56241252",
+                        "Mánizales",
+                        StateRequest.EnAnalisis,
+                        "Oficina 1014",
+                        DateTime.Now,
+                        DateTime.Now);
+
             await SeedClient("Freddy",
                         "Hernandez",
                         "234567890",

@@ -1,11 +1,17 @@
 ﻿using Aloti.Forms.Prims.Helpers;
+using Aloti.Forms.Prims.Models;
 using Aloti.Forms.Prims.Repositories;
+using Aloti.Forms.Prims.Services;
 using Aloti.Forms.Prims.Storage;
-using DryIoc;
 using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Navigation;
 using Rg.Plugins.Popup.Contracts;
+using Shared.Common.Enums;
+using Shared.Common.Responses;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Aloti.Forms.Prims.ViewModels
@@ -14,6 +20,7 @@ namespace Aloti.Forms.Prims.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IPopupNavigation _popupNavigation;
+        private readonly IApiServices _apiService;
         private readonly ModalDialogue _modalDialogue;
 
 
@@ -53,15 +60,15 @@ namespace Aloti.Forms.Prims.ViewModels
         public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(LoginAsync));
 
 
-        public LoginPageViewModel(INavigationService navigationService, IPopupNavigation popupNavigation) : base(navigationService)
+        public LoginPageViewModel(INavigationService navigationService, IPopupNavigation popupNavigation, IApiServices apiService) : base(navigationService)
         {
             _navigationService = navigationService;
             _popupNavigation = popupNavigation;
+            _apiService = apiService;
             _modalDialogue = new ModalDialogue(_popupNavigation);
 
             IsEnabled = true;
             IsRunning = false;
-
         }
 
         private async void LoginAsync()
@@ -78,30 +85,29 @@ namespace Aloti.Forms.Prims.ViewModels
 
             IsRunning = true;
 
-
             await Task.Delay(1500);
 
-            var userResponse = new UserRepository().LoginUser(Username, Password);
+            User userResponse = new UserRepository().LoginUser(Username, Password);
 
             if (userResponse == null)
             {
                 await _modalDialogue.SendDisplay("Atención", "Hubo un problema con la información del usuario.");
                 Username = string.Empty;
                 Password = string.Empty;
-
                 IsRunning = false;
                 IsEnabled = true;
                 return;
             }
+
+
 
             Settings.User = JsonConvert.SerializeObject(userResponse);
             Username = string.Empty;
             Password = string.Empty;
 
             await _navigationService.NavigateAsync("/NavigationPage/LandingPage");
-
-
         }
+
 
         private async Task<bool> ValidationAsync()
         {
