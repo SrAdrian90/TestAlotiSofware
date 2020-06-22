@@ -110,8 +110,5 @@ namespace Aloti.Forms.Prims.ViewModels
             IsEnabled = true;
 
         }
-
-
-
     }
 }
